@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 const notes = require("./notes");
 const yargs = require("yargs");
 
@@ -52,3 +51,5 @@ yargs.command({
     console.log("listing notes handler");
   },
 });
+
+yargs.parse();

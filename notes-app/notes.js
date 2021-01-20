@@ -1,15 +1,10 @@
 const fs = require("fs");
 const chalk = require("chalk");
 
-const getNotes = function () {
-  return "Your notes...";
-};
-
-const addNote = function (title, body) {
+const getNotes = () => "Your notes...";
+const addNote = (title, body) => {
   const notes = loadNotes();
-  const duplicateNotes = notes.filter(function (note) {
-    return note.title === title;
-  });
+  const duplicateNotes = notes.filter((note) => note.title === title);
 
   if (duplicateNotes.length === 0) {
     notes.push({

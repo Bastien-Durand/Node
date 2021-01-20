@@ -28,7 +28,6 @@ const listNotes = () => {
 const readNotes = (title) => {
   const notes = loadNotes();
   const noteFound = notes.find((note) => {
-    // console.log("=======================================");
     if (note.title === title) {
       console.log(chalk.blue.bold(`${title}`));
       console.log(note.body);

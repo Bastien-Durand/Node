@@ -19,6 +19,23 @@ const listNotes = () => {
   notes.forEach((note) => console.log(`Title: ${note.title}`));
 };
 
+// Read a note from the collection by title
+
+const readNotes = (title) => {
+  const notes = loadNotes();
+  const noteFound = notes.find((note) => {
+    // console.log("=======================================");
+    if (note.title === title) {
+      console.log(chalk.blue.inverse(`${title}`));
+      console.log(note.body);
+      return note.body;
+    }
+  });
+  if (!noteFound) {
+    console.log(chalk.red.inverse("No match found in collection"));
+  }
+};
+
 // Add a note to collection
 
 const addNote = (title, body) => {
@@ -69,6 +86,7 @@ const saveNotes = (notes) => {
 
 module.exports = {
   listNotes: listNotes,
+  readNotes: readNotes,
   addNote: addNote,
   removeNote: removeNote,
 };

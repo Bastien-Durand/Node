@@ -10,7 +10,8 @@ yargs.version("1.1.0");
 // Create add command
 yargs.command({
   command: "add",
-  describe: "Add a new note",
+  describe:
+    "Add a new note requires the --title='____' flag & the --body='____' flag",
   builder: {
     title: {
       describe: "Note title",
@@ -33,7 +34,7 @@ yargs.command({
   describe: "Remove a note",
   builder: {
     title: {
-      describe: "Note title for deletion",
+      describe: "Remove a note requires the --title='____' flag",
       demandOption: true,
       type: "string",
     },
@@ -45,7 +46,7 @@ yargs.command({
 ///////////////////////////
 yargs.command({
   command: "read",
-  describe: "Reading a note",
+  describe: "Reading a note requires the --title='____' flag",
   builder: {
     title: {
       describe: "Note title for search",

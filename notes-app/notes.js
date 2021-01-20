@@ -14,8 +14,12 @@ const loadNotes = () => {
 // List collection of notes by title
 
 const listNotes = () => {
-  console.log(chalk.inverse("Your notes"));
   const notes = loadNotes();
+  if (notes <= 0) {
+    console.log(chalk.red.inverse("No notes in collection:"));
+  } else {
+    console.log(chalk.inverse("Your Notes:"));
+  }
   notes.forEach((note) => console.log(`Title: ${note.title}`));
 };
 

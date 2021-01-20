@@ -1,9 +1,24 @@
 const notes = require("./notes");
 const yargs = require("yargs");
+const chalk = require("chalk");
+const { string } = require("yargs");
 
 //Customize yargs version
 
 yargs.version("1.1.0");
+
+const command = process.argv[2];
+if (!command) {
+  console.log(
+    chalk.blue.bold(
+      "Hang on you're missing an Command line argument to execute a command!"
+    )
+  );
+  console.log(
+    "Enter an argument following node app.js in the command line such as 'list'"
+  );
+  console.log("Available Commands: list, read, add, remove");
+}
 
 // Add, remove, read, list
 
@@ -14,12 +29,12 @@ yargs.command({
     "Add a new note requires the --title='____' flag & the --body='____' flag",
   builder: {
     title: {
-      describe: "Note title",
+      describe: "Add a note",
       demandOption: true,
       type: "string",
     },
     body: {
-      describe: "Body Description",
+      describe: "Notes Description",
       demandOption: true,
       type: "string",
     },
@@ -31,10 +46,10 @@ yargs.command({
 ///////////////////////////
 yargs.command({
   command: "remove",
-  describe: "Remove a note",
+  describe: "Remove a note requires the --title='____' flag",
   builder: {
     title: {
-      describe: "Remove a note requires the --title='____' flag",
+      describe: "Remove a note",
       demandOption: true,
       type: "string",
     },
@@ -46,10 +61,10 @@ yargs.command({
 ///////////////////////////
 yargs.command({
   command: "read",
-  describe: "Reading a note requires the --title='____' flag",
+  describe: "Read a note requires the --title='____' flag",
   builder: {
     title: {
-      describe: "Note title for search",
+      describe: "Enter a note title",
       demandOption: true,
       type: "string",
     },
@@ -61,7 +76,7 @@ yargs.command({
 
 yargs.command({
   command: "list",
-  describe: "Listing notes handler",
+  describe: "List all note titles",
   handler: () => {
     notes.listNotes();
   },

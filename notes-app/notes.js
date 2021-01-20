@@ -30,7 +30,7 @@ const readNotes = (title) => {
   const noteFound = notes.find((note) => {
     // console.log("=======================================");
     if (note.title === title) {
-      console.log(chalk.blue.inverse(`${title}`));
+      console.log(chalk.blue.bold(`${title}`));
       console.log(note.body);
       return note.body;
     }
@@ -52,9 +52,9 @@ const addNote = (title, body) => {
       body: body,
     });
     saveNotes(notes);
-    console.log(chalk.green("New note added!"));
+    console.log(chalk.green.inverse("New note added!"));
   } else {
-    console.log(chalk.red("Note title taken!"));
+    console.log(chalk.red.inverse("Note title taken!"));
   }
 };
 
@@ -77,7 +77,7 @@ const removeNote = (title) => {
     }
     saveNotes(newNotes);
   } catch (error) {
-    console.log(chalk.red("There was an issue saving"));
+    console.log(chalk.red.inverse("There was an issue saving"));
   }
 };
 

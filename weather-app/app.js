@@ -18,26 +18,31 @@ const request = require("request");
 //   }
 // });
 
-const geoURL =
-  "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoiYmR1cmFuZCIsImEiOiJja2tlcXZpNHkwZXh3Mm5qenBia3hnNmhzIn0.8_ergVy1AEdSzbUzD8BdDA&limit=1";
+// const geoURL =
+//   "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoiYmR1cmFuZCIsImEiOiJja2tlcXZpNHkwZXh3Mm5qenBia3hnNmhzIn0.8_ergVy1AEdSzbUzD8BdDA&limit=1";
 
-request({ url: geoURL, json: true }, (error, response) => {
-  if (error) {
-    console.log("There was an error");
-  } else if (response.body.features.length === 0) {
-    console.log("Invalid search terms, Try another");
-  } else {
-    const latitude = response.body.features[0].center[1];
-    const longitude = response.body.features[0].center[0];
-    console.log(latitude, longitude);
-  }
+// request({ url: geoURL, json: true }, (error, response) => {
+//   if (error) {
+//     console.log("There was an error");
+//   } else if (response.body.features.length === 0) {
+//     console.log("Invalid search terms, Try another");
+//   } else {
+//     const latitude = response.body.features[0].center[1];
+//     const longitude = response.body.features[0].center[0];
+//     console.log(latitude, longitude);
+//   }
 
-  console.log(
-    "Finished before request callback, I'm the last console.log in the codebase"
-  );
-});
+//   console.log(
+//     "Finished before request callback, I'm the last console.log in the codebase"
+//   );
+// });
 
 // Callback
 // setTimeout(() => {
 //   console.log("30s");
 // }, 2000);
+
+geoCode("Philadelphia", (error, data) => {
+  console.log("Error", error);
+  console.log("Data", data);
+});

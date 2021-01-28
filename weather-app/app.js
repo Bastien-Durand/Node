@@ -1,4 +1,5 @@
 const request = require("request");
+const geoCode = require("./utils/geocode");
 
 // const weatherURL =
 //   "http://api.weatherstack.com/current?access_key=fdd2af8236f75ed878fc09269407c622&query=37.8267,-122.4233&units=m";

@@ -21,4 +21,4 @@ const geoCode = (address, callback) => {
   });
 };
 
-module.exports = geocode;
+module.exports = geoCode;

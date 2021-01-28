@@ -1,12 +1,12 @@
 const request = require("request");
 
 const geoCode = (address, callback) => {
-  const URL =
+  const geoURL =
     `https://api.mapbox.com/geocoding/v5/mapbox.places/` +
     encodeURIComponent(address) +
     `}.json?access_token=pk.eyJ1IjoiYmR1cmFuZCIsImEiOiJja2tlcXZpNHkwZXh3Mm5qenBia3hnNmhzIn0.8_ergVy1AEdSzbUzD8BdDA&limit=1`;
 
-  request({ url: URL, json: true }, (error, response) => {
+  request({ url: geoURL, json: true }, (error, response) => {
     if (error) {
       callback("Unable to connect to location services!", undefined);
     } else if (response.body.features.length === 0) {
@@ -20,5 +20,10 @@ const geoCode = (address, callback) => {
     }
   });
 };
+
+// geoCode("Boston", (error, data) => {
+//     console.log("Error", error);
+//     console.log("Data", data);
+//   });
 
 module.exports = geoCode;

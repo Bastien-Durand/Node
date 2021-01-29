@@ -12,12 +12,10 @@ const request = require("request");
 
 const forecast = (latitude, longitude, callback) => {
   const forecastURL =
-    "http://api.weatherstack.com/current?access_key=fdd2af8236f75ed878fc09269407c622&query=" +
-    encodeURIComponent(latitude) +
-    "," +
-    encodeURIComponent(longitude) +
-    "&units=m";
+    "http://api.weatherstack.com/current?access_key=fdd2af8236f75ed878fc09269407c622&query=40.7831,-73.9712&units=m";
 
+  console.log(latitude);
+  console.log(longitude);
   request({ url: forecastURL, json: true }),
     (error, response) => {
       if (error) {
@@ -31,11 +29,7 @@ const forecast = (latitude, longitude, callback) => {
         );
       } else {
         console.log("Success");
-        callback(undefined, {
-          data: response.body.current,
-          currentTemp: data.temperature,
-          feelsLike: data.feelsLike,
-        });
+        callback(undefined, response);
       }
       console.log("out");
     };

@@ -1,6 +1,8 @@
 const geoCode = require("./utils/geocode");
 const forecast = require("./utils/forecast");
 
+// Look into try & catch
+
 geoCode("Boston", (error, data) => {
   console.log("geoCode()");
   console.log("Error", error);

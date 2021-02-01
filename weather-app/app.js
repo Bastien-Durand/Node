@@ -1,11 +1,18 @@
 const geoCode = require("./utils/geocode");
 const forecast = require("./utils/forecast");
+const chalk = require("chalk");
 
-const arg = process.argv[2];
+console.log(
+  chalk.yellow(
+    "For locations that require spacing such as New York, Write them with 'quotes'"
+  )
+);
 
-if (process.argv[2]) {
-  arg.toString();
-  geoCode(arg, (error, geoData) => {
+const address = process.argv[2];
+
+if (address) {
+  address.toString();
+  geoCode(address, (error, geoData) => {
     if (error) {
       return console.log(error);
     }

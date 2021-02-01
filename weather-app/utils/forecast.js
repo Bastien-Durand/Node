@@ -14,7 +14,11 @@ const forecast = (latitude, longitude, callback) => {
     } else if (response.body.error) {
       callback("Unable to find location. Try another search term.", undefined);
     } else {
-      callback(undefined, response.body);
+      callback(undefined, {
+        current: response.body.current.weather_descriptions,
+        temp: response.body.current.temperature,
+        wind: response.body.current.wind_speed,
+      });
     }
   });
 };

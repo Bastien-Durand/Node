@@ -1,16 +1,26 @@
 const geoCode = require("./utils/geocode");
 const forecast = require("./utils/forecast");
 
-// Look into try & catch
+const arg = process.argv[2];
 
-geoCode("Boston", (error, data) => {
-  console.log("geoCode()");
-  console.log("Error", error);
-  console.log("Data", data);
-});
+if (process.argv[2]) {
+  arg.toString();
+  geoCode(arg, (error, geoData) => {
+    if (error) {
+      return console.log(error);
+    }
 
-forecast(44.1545, -75.7088, (error, data) => {
-  console.log("forecast()");
-  console.log("Error", error);
-  console.log("Data", data);
-});
+    forecast(geoData.latitude, geoData.longitude, (error, forecastData) => {
+      if (error) {
+        return console.log(error);
+      }
+
+      console.log(geoData.location);
+      console.log(forecastData);
+    });
+  });
+} else {
+  return console.log(
+    "Please enter a location as an argument like: node app.js Sydney"
+  );
+}

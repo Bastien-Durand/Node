@@ -8,17 +8,22 @@ const forecast = (latitude, longitude, callback) => {
     longitude +
     "&units=m";
 
-  request({ url: forecastURL, json: true }, (error, response) => {
+  request({ url: forecastURL, json: true }, (error, { body }) => {
     if (error) {
       callback("Unable to connect to location services", undefined);
-    } else if (response.body.error) {
+    } else if (body.error) {
       callback("Unable to find location. Try another search term.", undefined);
     } else {
-      callback(undefined, {
-        current: response.body.current.weather_descriptions,
-        temp: response.body.current.temperature,
-        wind: response.body.current.wind_speed,
-      });
+      callback(
+        undefined,
+        "It is currently " +
+          body.current.temperature +
+          " Degrees, " +
+          body.current.weather_descriptions +
+          " with " +
+          body.current.wind_speed +
+          "km wind"
+      );
     }
   });
 };

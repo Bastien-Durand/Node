@@ -12,17 +12,16 @@ const address = process.argv[2];
 
 if (address) {
   address.toString();
-  geoCode(address, (error, geoData) => {
+  geoCode(address, (error, { latitude, longitude, location } = {}) => {
     if (error) {
       return console.log(error);
     }
 
-    forecast(geoData.latitude, geoData.longitude, (error, forecastData) => {
+    forecast(latitude, longitude, (error, forecastData) => {
       if (error) {
         return console.log(error);
       }
-
-      console.log(geoData.location);
+      console.log(location);
       console.log(forecastData);
     });
   });

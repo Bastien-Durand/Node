@@ -1,5 +1,3 @@
-const { clear } = require("console");
-
 const http = require("http");
 
 const URL =

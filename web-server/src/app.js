@@ -1,23 +1,13 @@
 const express = require("express");
 const path = require("path");
 
+const PORT = 3000;
+
 const app = express();
 
-const publicDirPath = path.join(__dirname, "../public");
+//This is the root being served as a static directory
 
-app.use(express.static(publicDirPath));
-
-app.get("/", (req, res) => {
-  res.send("Hello express!");
-});
-
-app.get("/help", (req, res) => {
-  res.send("Help");
-});
-
-app.get("/about", (req, res) => {
-  res.send("<h1>About page</h1>");
-});
+app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("/weather", (req, res) => {
   res.send({
@@ -25,8 +15,6 @@ app.get("/weather", (req, res) => {
     forecast: "raining",
   });
 });
-
-const PORT = 3000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -14,16 +14,16 @@ const forecast = (latitude, longitude, callback) => {
     } else if (body.error) {
       callback("Unable to find location. Try another search term.", undefined);
     } else {
-      callback(
-        undefined,
-        "It is currently " +
-          body.current.temperature +
-          " Degrees, " +
-          body.current.weather_descriptions +
-          " with " +
-          body.current.wind_speed +
-          "km wind"
-      );
+      const current = body.current;
+      callback(undefined, {
+        time: body.location.localtime,
+        icon: current.weather_icons,
+        description: current.weather_descriptions,
+        temperature: current.temperature,
+        uv: current.uv_index,
+        windSpeed: current.wind_speed,
+        windDir: current.wind_dir,
+      });
     }
   });
 };

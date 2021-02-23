@@ -1,4 +1,19 @@
-// Callback
+// Callback 50% THROUGH THE COURSE (We came back to this part for promises)
+const doWorkCallbak = (callback) => {
+  setTimeout(() => {
+    callback(undefined, [1, 4, 6]);
+  }, 2000);
+};
+
+doWorkCallbak((error, result) => {
+  if (error) {
+    return console.log(error);
+  }
+
+  console.log(result);
+});
+
+// Callback START OF COURSE
 // setTimeout(() => {
 //   console.log("2 Seconds Ended");
 // }, 2000);

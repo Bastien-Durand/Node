@@ -22,6 +22,31 @@ MongoClient.connect(
     }
     const db = client.db(databaseName);
 
+    const query = {}
+    const update = { $set: {completed: true}}
+
+    db.collection('tasks').updateMany({completed: false}, {
+      $set: {
+        completed: true
+      }
+    }
+    ).then(result => {
+      console.log(result)
+    }).catch(error => console.log(error))
+    
+    
+    
+    //   _id: new ObjectID('602c5bd1e1c3e15e058a4ddc')
+    // }, {
+    //   $set: {
+    //     description: 'Confident at using MongoDB'
+    //   }
+    // }).then((result) => {
+    //   console.log(result)
+    // }).catch((error) => {
+    //   console.log(error)
+    // })
+
     // FIND SINGLE TASK BY OBJECTID
 
     // db.collection("tasks").findOne(
